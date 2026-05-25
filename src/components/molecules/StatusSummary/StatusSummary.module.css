@@ -1,0 +1,72 @@
+.statusSummaryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.statCard {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    min-width: 130px;
+    flex: 1;
+}
+
+.statIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.statValue {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.2;
+}
+
+.statLabel {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Responsive - Stack on smaller screens */
+@media (max-width: 768px) {
+    .statusSummaryContainer {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .statCard {
+        min-width: calc(50% - 0.5rem);
+        padding: 0.5rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .statCard {
+        min-width: 100%;
+    }
+}

@@ -1,0 +1,50 @@
+.container {
+    overflow: auto;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    flex: 1;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.thead {
+    background-color: var(--background);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.th {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.tr {
+    border-bottom: 1px solid var(--background);
+    transition: background-color 0.15s;
+}
+
+.tr:hover {
+    background-color: var(--background);
+}
+
+.td {
+    padding: var(--spacing-md);
+    color: var(--text-main);
+    vertical-align: middle;
+    font-size: var(--text-sm);
+}
+
+.emptyState {
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--text-secondary);
+}

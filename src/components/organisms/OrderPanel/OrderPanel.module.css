@@ -1,0 +1,264 @@
+.rightPanel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.orderDate {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.tableSelectionContainer {
+  position: relative;
+  margin: 0.75rem 0;
+}
+
+.tableSelectBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tableSelectBtn:hover {
+  border-color: #fbbf24;
+  background: #fef3c7;
+}
+
+.tableIcon {
+  display: flex;
+  align-items: center
+}
+
+.tableText {
+  flex: 1;
+  text-align: left
+}
+
+.tableArrow {
+  margin-left: auto
+}
+
+.tablePopupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 60;
+}
+
+.tablePopupModal {
+  position: fixed;
+  right: 1rem;
+  top: 20%;
+  width: 320px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  z-index: 100;
+}
+
+.tablePopupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.tablePopupClose {
+  background: none;
+  border: none;
+  cursor: pointer
+}
+
+.tablePopupGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem
+}
+
+.tablePopupItem {
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem
+}
+
+.tablePopupItem.selected {
+  background: #fef3c7;
+  border-color: #fbbf24
+}
+
+.tablePopupIcon {
+  display: flex;
+  align-items: center
+}
+
+.tablePopupNumber {
+  font-weight: 500
+}
+
+.assignSelect {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  margin: 0.5rem 0
+}
+
+.orderItems {
+  margin-top: 0.5rem
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px dashed #e5e7eb;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.rejectedItem {
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+}
+
+.orderItemName {
+  flex: 1
+}
+
+.orderQtyControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem
+}
+
+.qtyBtn {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.qtyBtn:hover {
+  border-color: #fbbf24;
+  color: #fbbf24;
+}
+
+.qtyValue {
+  min-width: 24px;
+  text-align: center
+}
+
+.orderItemPrice {
+  font-weight: 600
+}
+
+.orderSummaryBreakdown {
+  margin-top: 0.75rem
+}
+
+.orderSummaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem 0
+}
+
+.orderSummaryDivider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0.5rem 0
+}
+
+.orderGrandTotal {
+  font-weight: 700
+}
+
+.orderTypeBtns {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem
+}
+
+.orderTypeBtn {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #fff
+}
+
+.orderTypeBtn.dineIn {
+  background: #fef3c7;
+  border-color: #fbbf24
+}
+
+.orderTypeBtn.takeAway {
+  background: #fff
+}
+
+.placeOrderBtn {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: #fbbf24;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.placeOrderBtn:hover {
+  background-color: #f59e0b;
+}
+
+.clearOrderBtn {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: #fff;
+  color: #fbbf24;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.clearOrderBtn:hover {
+  background-color: #fef3c7;
+}
+/* Scrollbar styling for order items container */
+.orderItems::-webkit-scrollbar {
+  width: 6px;
+}
+
+.orderItems::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.orderItems::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.orderItems::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

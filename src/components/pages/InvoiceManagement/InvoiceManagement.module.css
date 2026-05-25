@@ -1,0 +1,316 @@
+.page {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.exportBtn {
+    background-color: #d97706;
+    /* Match theme if applicable, otherwise a nice amber */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.exportBtn:hover {
+    background-color: #b45309;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filterGroup label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+}
+
+.filterGroup input,
+.filterGroup select,
+.searchInput,
+.dateInput,
+.selectInput {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+.searchGroup input{
+     width: 100%;
+    max-width: 700px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.typeTag {
+    font-weight: 500;
+}
+
+.dineIn {
+    background-color: #e0e7ff;
+    color: #3730a3;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.takeaway {
+    background-color: #fce7f3;
+    color: #db2777;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.grandTotal {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.tableContainer {
+    overflow-x: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.table {
+    width: 100%;
+    min-width: 1300px;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.statusBadge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.statusPaid {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.statusUnpaid {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.statusPartial {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.actionBtns {
+    display: flex;
+    gap: 8px;
+}
+
+.viewBtn {
+    background: none;
+    border: none;
+    color: #0f0f0f;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.viewBtn:hover {
+    color: #0f0f0f;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .page {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+.downloadBtn {
+    background: none;
+    border: none;
+    color: #0f0f0f;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.downloadBtn:hover {
+       color: #0f0f0f;
+
+}
+
+.printBtn {
+    background: none;
+    border: none;
+    color: #0f0f0f;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.printBtn:hover {
+    color: #0f0f0f;
+}
+
+/* Loading State */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    gap: 20px;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    color: #d97706;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error State */
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    gap: 20px;
+    text-align: center;
+}
+
+.errorContainer h2 {
+    color: #991b1b;
+    margin: 0;
+}
+
+.errorContainer p {
+    color: #666;
+    margin: 0;
+}
+
+.retryBtn {
+    background-color: #d97706;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.retryBtn:hover {
+    background-color: #b45309;
+}
+
+/* Empty State */
+.emptyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    gap: 10px;
+    text-align: center;
+}
+
+.emptyContainer h2 {
+    color: #333;
+    margin: 0;
+}
+
+.emptyContainer p {
+    color: #666;
+    margin: 0;
+}
+
+/* No Results State */
+.noResults {
+    padding: 40px;
+    text-align: center;
+    color: #666;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Header enhancements */
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.count {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}

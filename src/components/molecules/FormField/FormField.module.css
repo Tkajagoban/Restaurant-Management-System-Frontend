@@ -1,0 +1,31 @@
+.formField {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--spacing-md);
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.inputWithElement {
+    padding-right: 2.5rem !important;
+}
+
+.rightElement {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    z-index: 2;
+}
+
+.errorMessage {
+    color: var(--danger);
+    font-size: 0.75rem;
+    margin-top: var(--spacing-xs);
+}
