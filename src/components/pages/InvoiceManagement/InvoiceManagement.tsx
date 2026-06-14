@@ -17,6 +17,7 @@ export interface InvoiceItem {
 export interface Invoice {
   invoiceId: string;
   orderId: string;
+  orderSummaryId: number;
   dateTime: string;
   orderType: 'Dine-In' | 'Takeaway';
   tableNumber?: string;
@@ -102,11 +103,14 @@ const InvoiceManagement = () => {
         ? order.orderItems
         : orderItemList.filter((item) => item.orderSummaryId === order.id);
 
+      const orderType = order.orderType === 'DINE_IN' ? 'Dine-In' : 'Takeaway';
+
       return {
         invoiceId: `INV-${order.id}`,
         orderId: order.orderId || `ORD-${order.id}`,
+        orderSummaryId: order.id,
         dateTime: order.createdDateTime || new Date().toLocaleString(),
-        orderType: order.orderType === 'DINE_IN' ? 'Dine-In' : 'Takeaway',
+        orderType,
         tableNumber: order.tableNumber || (order.tableId ? `Table ${order.tableId}` : undefined),
         stewardName: order.stewardName || 'System',
         subtotal: order.subTotal || 0,
@@ -127,24 +131,59 @@ const InvoiceManagement = () => {
 
   const filteredData = useMemo(() => {
     return invoicesFromAPI.filter((inv) => {
-      const matchesSearch = inv.orderId.toLowerCase().includes(searchId.toLowerCase());
-      const matchesType = typeFilter === 'All' || inv.orderType === typeFilter; // Keep original type comparison for Invoice type
+      const searchTerm = searchId.trim().toLowerCase();
+      const matchesSearch = searchTerm === ''
+        ? true
+        : [inv.orderId, inv.invoiceId].some((value) => value.toLowerCase().includes(searchTerm));
+      const matchesType = typeFilter === 'All' || inv.orderType === typeFilter;
       return matchesSearch && matchesType;
     });
   }, [invoicesFromAPI, searchId, typeFilter]);
 
   const handleExport = () => {
-    const headers = 'Invoice ID,Order ID,Date,Type,Table,Subtotal,Tax,Service Charge,Grand Total,Created By\\n';
+    const headers = 'Invoice ID,Order ID,Date,Type,Table,Subtotal,Tax,Service Charge,Grand Total,Created By\n';
     const csvData = filteredData.map(inv =>
       `${inv.invoiceId},${inv.orderId},${inv.dateTime},${inv.orderType},${inv.tableNumber || '-'},${inv.subtotal},${inv.taxAmount},${inv.serviceCharge},${inv.grandTotal},${inv.createdBy}`
-    ).join('\\n');
+    ).join('\n');
 
     const blob = new Blob([headers + csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = `Invoices_${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  };
+
+  const downloadInvoice = (inv: Invoice) => {
+    const invoiceText = [
+      `Invoice: ${inv.invoiceId}`,
+      `Order ID: ${inv.orderId}`,
+      `Date: ${inv.dateTime}`,
+      `Type: ${inv.orderType}`,
+      `Table: ${inv.tableNumber || '-'}`,
+      '',
+      'Items:',
+      ...inv.items.map((item) => `${item.name} x${item.quantity} - Rs. ${(item.price * item.quantity).toFixed(2)}`),
+      '',
+      `Subtotal: Rs. ${inv.subtotal.toFixed(2)}`,
+      `Tax: Rs. ${inv.taxAmount.toFixed(2)}`,
+      `Service Charge: Rs. ${inv.serviceCharge.toFixed(2)}`,
+      `Grand Total: Rs. ${inv.grandTotal.toFixed(2)}`,
+      `Server: ${inv.createdBy}`
+    ].join('\n');
+
+    const blob = new Blob([invoiceText], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${inv.invoiceId}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
   };
 
   const printInvoice = (inv: Invoice) => {
@@ -224,8 +263,7 @@ const InvoiceManagement = () => {
   const openDetails = async (inv: Invoice) => {
     try {
       // Fetch full order details to get latest tax/service charge/items
-      const orderId = inv.invoiceId.replace('INV-', '');
-      const fullOrder = await getOrderSummaryById(Number(orderId));
+      const fullOrder = await getOrderSummaryById(inv.orderSummaryId);
 
       if (fullOrder) {
         // Merge full order details into the invoice object
@@ -370,7 +408,7 @@ const InvoiceManagement = () => {
                       <button className={styles.viewBtn} onClick={() => openDetails(inv)} title="View Details">
                         <FaEye size={20} />
                       </button>
-                      <button className={styles.downloadBtn} onClick={() => printInvoice(inv)} title="Download Details">
+                      <button className={styles.downloadBtn} onClick={() => downloadInvoice(inv)} title="Download Details">
                         <FaDownload size={20} />
                       </button>
                       <button className={styles.printBtn} onClick={() => printInvoice(inv)} title="Print Details">
