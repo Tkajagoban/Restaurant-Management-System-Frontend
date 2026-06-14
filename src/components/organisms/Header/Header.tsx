@@ -154,7 +154,7 @@ export function Header({ activeView, onNavigate, onRoleChange, onSettingsClick }
                     <div className={styles.logoIcon}>
                         <img src={logo} alt="இது நம்ம கடை" style={{ width: '80px', height: 'auto', maxHeight: '100%', objectFit: 'contain' }} />
                     </div>
-                    <span className={styles.logoText}>இது நம்ம கடை</span>
+                    <span className={styles.logoText}>Delicious Restaurant</span>
                 </div>
 
                 <div className={styles.centerSection}>

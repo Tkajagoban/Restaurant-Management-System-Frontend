@@ -1,3 +1,8 @@
+/* ========================================
+   GOOGLE FONTS IMPORT
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Great+Vibes&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,91 +10,607 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f3f4f6;
+  font-family: 'Poppins', -apple-system, sans-serif;
+  background-color: #0f172a;
   line-height: 1.6;
 }
 
-/* Login Styles (Redesigned) */
+/* ========================================
+   LOGIN PAGE WRAPPER
+   ======================================== */
 .login-page-wrapper {
   min-height: 100vh;
+  width: 100%;
   display: flex;
-  background-color: #1a1c23;
-  color: #fff;
-  font-family: 'Inter', -apple-system, sans-serif;
-}
-
-.login-image-section {
-  flex: 1;
-  display: none;
+  align-items: stretch;
+  justify-content: stretch;
+  position: relative;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
-  position: relative;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.login-image-section::after {
-  content: '';
+.login-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(26, 28, 35, 0.4), #1a1c23);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(0, 0, 0, 0.8));
+  z-index: 1;
+  pointer-events: none;
 }
 
-@media (min-width: 1024px) {
-  .login-image-section {
-    display: block;
-  }
+/* ========================================
+   LEFT BRANDING SECTION
+   ======================================== */
+.login-branding-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
 }
 
+.chef-icon-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chef-hat {
+  font-size: 4rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.serving-tray {
+  font-size: 3rem;
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.branding-content {
+  max-width: 400px;
+}
+
+.branding-intro {
+  font-size: 1.25rem;
+  color: #fbbf24;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.branding-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(251, 191, 36, 0.2);
+}
+
+.branding-restaurant {
+  font-size: 1.5rem;
+  color: #fbbf24;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+}
+
+.branding-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #fbbf24, transparent);
+  margin: 1.5rem auto;
+}
+
+.branding-tagline {
+  font-size: 0.95rem;
+  color: #fbbf24;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.branding-description {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* ========================================
+   RIGHT LOGIN FORM SECTION
+   ======================================== */
 .login-form-section {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  background: #1a1c23;
+  padding: 2rem 3rem;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 
 .login-card {
   width: 100%;
-  max-width: 440px;
-  background: rgba(31, 41, 55, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 3rem 2.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  max-width: 480px;
+  background: rgba(25, 25, 35, 0.85);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: 32px;
+  padding: 3.5rem 2.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(251, 191, 36, 0.1);
 }
 
-.logo-section {
+/* ========================================
+   WELCOME SECTION
+   ======================================== */
+.welcome-section {
   text-align: center;
   margin-bottom: 2.5rem;
 }
 
-.logo-section img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+.brand-logo{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.15));
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.25);
 }
 
-.title {
-  font-size: 2.25rem;
-  font-weight: 800;
+.chef-icon {
+  font-size: 3rem;
+}
+
+.welcome-title {
+  font-size: 2rem;
+  font-weight: 700;
   color: #fff;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
 }
 
-.subtitle {
+.welcome-title .highlight {
+  color: #fbbf24;
+  font-weight: 800;
+}
+
+.welcome-subtitle {
   color: #9ca3af;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
+}
+
+.input-wrapper {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 16px 14px 50px;
+  background: rgba(17, 24, 39, 0.8);
+  border: 1.5px solid rgba(75, 85, 99, 0.5);
+  color: #fff;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-field::placeholder {
+  color: #6b7280;
+}
+
+.input-field:focus {
+  outline: none;
+  background: rgba(17, 24, 39, 0.95);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15), inset 0 0 0 1px rgba(251, 191, 36, 0.1);
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #fbbf24;
+}
+
+.password-input {
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  transition: color 0.2s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: #fbbf24;
+}
+
+/* ========================================
+   FORGOT PASSWORD & LOGIN BUTTON
+   ======================================== */
+.forgot-password-container {
+  text-align: right;
+  margin-bottom: 2rem;
+}
+
+.forgot-link {
+  font-size: 0.9rem;
+  color: #fbbf24;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.forgot-link:hover {
+  color: #f59e0b;
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #111827;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.25), 0 2px 6px rgba(251, 191, 36, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.login-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(251, 191, 36, 0.35), 0 4px 8px rgba(251, 191, 36, 0.2);
+}
+
+.login-btn:hover::after {
+  left: 200%;
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   ERROR MESSAGE
+   ======================================== */
+.error-message {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 1024px) {
+  .login-branding-section {
+    display: none;
+  }
+
+  .login-page-wrapper {
+    justify-content: center;
+  }
+
+  .login-form-section {
+    flex: 1;
+  }
+
+  .login-card {
+    margin: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    max-width: 100%;
+    padding: 2.5rem 1.75rem;
+    border-radius: 24px;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .icon-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .icon-dome {
+    font-size: 2rem;
+  }
+
+  .login-btn {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+  }
+
+  .input-field {
+    font-size: 0.9rem;
+    padding: 12px 14px 12px 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form-section {
+    padding: 1rem;
+  }
+
+  .login-card {
+    padding: 2rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .welcome-title {
+    font-size: 1.25rem;
+  }
+
+  .input-field {
+    font-size: 1rem;
+  }
+}
+
+
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(25, 25, 35, 0.85);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: 32px;
+  padding: 3.5rem 2.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(251, 191, 36, 0.1);
+}
+
+.forgot-password-card {
+  width: 520px;
+  max-width: 520px;
+  background: rgba(18, 20, 30, 0.96);
+  backdrop-filter: none;
+  border: none;
+  border-radius: 28px;
+  padding: 60px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65);
+}
+
+.forgot-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 2rem;
+}
+
+.forgot-title {
+  color: #FFFFFF;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.forgot-subtitle {
+  color: #B8BCC8;
   font-size: 1rem;
+  max-width: 420px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.forgot-password-card .logo {
+  margin-bottom: 0;
+}
+
+.forgot-password-card .icon-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card.forgot-password-card .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.login-card.forgot-password-card .form-label {
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.login-card.forgot-password-card .input-field {
+  background: #111827;
+  border: 1px solid #2F3A4D;
+  color: #FFFFFF;
+  border-radius: 14px;
+  height: 58px;
+  padding: 0 16px 0 50px;
+}
+
+.login-card.forgot-password-card .input-field::placeholder {
+  color: #8A93A3;
+}
+
+.login-card.forgot-password-card .input-field:focus {
+  border-color: #FFC107;
+  background: #111827;
+  box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.14);
+}
+
+.login-card.forgot-password-card .login-btn {
+  height: 60px;
+  font-size: 1.05rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #FFC107 0%, #FF9F00 100%);
+  color: #0F1117;
+  font-weight: 700;
+  box-shadow: 0 20px 40px rgba(255, 193, 7, 0.18);
+}
+
+.login-card.forgot-password-card .login-btn:hover {
+  transform: translateY(-2px);
+}
+
+.login-card.forgot-password-card .forgot-password-container {
+  text-align: center;
+  margin-top: 1.75rem;
+}
+
+.login-card.forgot-password-card .back-link {
+  color: #B8BCC8;
   font-weight: 500;
+}
+
+.login-card.forgot-password-card .back-link:hover {
+  color: #FFC107;
+}
+
+.login-card.forgot-password-card .footer {
+  display: none;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.15));
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.icon-dome {
+  font-size: 2.5rem;
+}
+
+.welcome-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.welcome-title .highlight {
+  color: #fbbf24;
+  font-weight: 800;
+}
+
+.welcome-subtitle {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .form-group {
@@ -170,9 +691,9 @@ body {
   color: #fbbf24;
 }
 
-.forgot-password {
-  text-align: right;
-  margin-bottom: 2rem;
+.footer-link {
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
 .forgot-link {
@@ -180,7 +701,7 @@ body {
   color: #fbbf24;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
 .forgot-link:hover {
@@ -242,20 +763,7 @@ body {
   gap: 0.5rem;
 }
 
-.footer {
-  margin-top: 2.5rem;
-  text-align: center;
-}
 
-.footer-text {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.footer-highlight {
-  font-weight: 700;
-  color: #e5e7eb;
-}
 
 /* Forgot Password Styles */
 .success-message {
@@ -389,12 +897,12 @@ body {
 }
 
 .right-panel {
-  width: 320px;
-  min-width: 320px;
-  max-width: 320px;
+  width: 420px;
+  min-width: 420px;
+  max-width: 420px;
   background-color: #f9fafb;
-  padding: 0.75rem;
-  border-radius: 8px;
+  padding: 1rem;
+  border-radius: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

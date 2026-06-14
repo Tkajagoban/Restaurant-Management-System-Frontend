@@ -173,17 +173,17 @@
     width: 40px;
     height: 40px;
     border: none;
-    background-color: #f3f4f6;
+    background-color: #FFC107; /* yellow accent */
     border-radius: 8px;
-    color: #6b7280;
+    color: #0F1117;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .dropdownBtn:hover {
-    background-color: #e5e7eb;
-    color: #374151;
-    border: 1px solid #fbbf24;
+    background-color: #FFB000;
+    color: #0F1117;
+    transform: translateY(-2px);
 }
 
 .dropdownMenu {

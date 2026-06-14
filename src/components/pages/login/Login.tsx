@@ -5,8 +5,9 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import './login.css';
 import { useAuth } from '../../../contexts/AuthContext';
 import { postLogin } from '../../../api/login/Login.api';
-import logo from '../../../assets/logo.png';
-import loginBg from '../../../assets/login_bg.png';
+import loginBg from '../../../assets/new_backround.png';
+import { GiChefToque } from 'react-icons/gi';
+import { FaConciergeBell } from 'react-icons/fa';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -73,18 +74,50 @@ function Login() {
 
 
   return (
-    <div className="login-page-wrapper">
-      <div 
-        className="login-image-section"
-        style={{ backgroundImage: `url(${loginBg})` }}
-      ></div>
+    <div className="login-page-wrapper" style={{ backgroundImage: `url(${loginBg})` }}>
+      {/* Background Overlay */}
+      <div className="login-overlay"></div>
+
+      {/* Left Branding Section */}
+      <div className="login-branding-section">
+        {/* Chef Icon */}
+        <div className="chef-icon-container">
+          <div className="chef-hat">👨‍🍳</div>
+          
+        
+        </div>
+
+        {/* Main Branding */}
+        <div className="branding-content">
+          <p className="branding-intro">Hey it's</p>
+          <h1 className="branding-name">Delicious</h1>
+          <p className="branding-restaurant">RESTAURANT</p>
+          
+          {/* Decorative Line */}
+          <div className="branding-divider"></div>
+          
+          {/* Tagline */}
+          <p className="branding-tagline">⭐⭐ Premium Dining Experience ⭐⭐</p>
+          
+          {/* Description */}
+          <p className="branding-description">
+            Smart Restaurant Management System<br />
+            for orders, billing, tables and kitchen.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Login Section */}
       <div className="login-form-section">
         <div className="login-card">
-          {/* Logo & Title */}
-          <div className="logo-section">
-            <img src={logo} alt="இது நம்ம கடை" />
-            <h1 className="title">இது நம்ம கடை</h1>
-            <p className="subtitle tamil-font">Premium Dining Experience</p>
+          {/* Icon & Welcome */}
+          <div className="welcome-section">
+            <div className="brand-logo">
+  <GiChefToque className="chef-icon"/>
+  <FaConciergeBell className="tray-icon"/>
+</div>
+            <h1 className="welcome-title">Welcome <span className="highlight">Back!</span></h1>
+            <p className="welcome-subtitle">Login to access your restaurant dashboard</p>
           </div>
 
           {/* Error Message */}
@@ -94,13 +127,13 @@ function Login() {
           <form onSubmit={handleSubmit}>
             {/* Email Field */}
             <div className="form-group">
-              <label className="form-label">Enter your email</label>
+              <label className="form-label">Email Address</label>
               <div className="input-wrapper">
                 <span className="input-icon"><FiMail size={18} /></span>
                 <input
                   type="email"
                   className="input-field"
-                  placeholder="name@example.com"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -110,13 +143,13 @@ function Login() {
 
             {/* Password Field */}
             <div className="form-group">
-              <label className="form-label">Enter your password</label>
+              <label className="form-label">Password</label>
               <div className="input-wrapper">
                 <span className="input-icon"><FiLock size={18} /></span>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className="input-field password-input"
-                  placeholder="••••••••"
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -132,7 +165,7 @@ function Login() {
             </div>
 
             {/* Forgot Password */}
-            <div className="forgot-password">
+            <div className="forgot-password-container">
               <Link to="/forgot-password" className="forgot-link">
                 Forgot Password?
               </Link>
@@ -143,13 +176,6 @@ function Login() {
               Login
             </button>
           </form>
-
-          {/* Footer */}
-          <div className="footer">
-            <p className="footer-text">
-              Powered by <span className="footer-highlight">இது நம்ம கடை</span>
-            </p>
-          </div>
         </div>
       </div>
     </div>

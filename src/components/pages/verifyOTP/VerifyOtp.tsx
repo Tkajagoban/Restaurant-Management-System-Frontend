@@ -1,6 +1,7 @@
 import React from 'react';
+// Uses shared login.css for consistent auth styling; background controlled in Login.tsx
 import { MdDialpad } from 'react-icons/md';
-import styles from './VerifyOtp.module.css';
+import '../login/login.css'
 
 interface Props {
   email: string;
@@ -13,14 +14,14 @@ interface Props {
 
 export default function VerifyOtp({ email, otp, setOtp, onVerifyOtp, onResend, isLoading }: Props) {
   return (
-    <form onSubmit={onVerifyOtp} className={styles.form}>
-      <div className={styles['form-group']}>
-        <label className={styles['form-label']}>Enter 6-Digit OTP</label>
-        <div className={styles['input-wrapper']}>
-          <span className={styles['input-icon']}><MdDialpad size={18} /></span>
+    <form onSubmit={onVerifyOtp} className={'form'}>
+      <div className={'form-group'}>
+        <label className={'form-label'}>Enter 6-Digit OTP</label>
+        <div className={'input-wrapper'}>
+          <span className={'input-icon'}><MdDialpad size={18} /></span>
           <input
             type="text"
-            className={`${styles['input-field']} ${styles['otp-input']}`}
+            className={`input-field otp-input`}
             placeholder="Enter OTP"
             value={otp}
             onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
@@ -28,14 +29,14 @@ export default function VerifyOtp({ email, otp, setOtp, onVerifyOtp, onResend, i
             required
           />
         </div>
-        <p className={styles['info-text']}>OTP sent to {email}</p>
+        <p className={'info-text'}>OTP sent to {email}</p>
       </div>
 
-      <button type="submit" className={styles['login-btn']} disabled={isLoading}>
+      <button type="submit" className={'login-btn'} disabled={isLoading}>
         {isLoading ? 'Verifying...' : 'Verify'}
       </button>
 
-      <button type="button" className={styles['resend-btn']} onClick={onResend} disabled={isLoading}>
+      <button type="button" className={'resend-btn'} onClick={onResend} disabled={isLoading}>
         Resend OTP
       </button>
     </form>

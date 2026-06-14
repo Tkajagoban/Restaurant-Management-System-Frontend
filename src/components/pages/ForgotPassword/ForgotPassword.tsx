@@ -7,7 +7,10 @@ import { postSendEmail } from '../../../api/sendEmail/SendEmail.api';
 import { postVerifyOTP } from '../../../api/verifyOTP/VerifyOTP.api';
 import { postResetPassword } from '../../../api/resetPassword/ResetPassword.api';
 import '../login/login.css'
+// TODO: replace background image here if you want a different auth background
 import logo from '../../../assets/logo.png';
+// TODO: replace background image path below (currently new_backround.png)
+import loginBg from '../../../assets/new_backround.png';
 
 type Step = 'email' | 'otp' | 'reset';
 
@@ -160,84 +163,106 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="container">
-      <div className='login-card'>
-        <div className='logo-section'>
-          <div className="logo">
-            <img src={logo} alt="Mr. PHO" style={{ width: '100px', height: '250px', objectFit: 'contain' }} />
+    <div className="login-page-wrapper" style={{ backgroundImage: `url(${loginBg})` }}>
+      <div className="login-overlay"></div>
+
+      <div className="login-branding-section">
+        <div className="chef-icon-container">
+          <div className="chef-hat">👨‍🍳</div>
+        </div>
+
+        <div className="branding-content">
+          <p className="branding-intro">Hey it's</p>
+          <h1 className="branding-name">Delicious</h1>
+          <p className="branding-restaurant">RESTAURANT</p>
+          <div className="branding-divider"></div>
+          <p className="branding-tagline">⭐⭐ Premium Dining Experience ⭐⭐</p>
+          <p className="branding-description">
+            Smart Restaurant Management System<br />
+            for orders, billing, tables and kitchen.
+          </p>
+        </div>
+      </div>
+
+      <div className="login-form-section">
+        <div className='login-card forgot-password-card'>
+          <div className='forgot-header'>
+            <div className="logo icon-circle">
+              <img src={logo} alt="Mr. PHO" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />
+            </div>
+
+            {step === 'email' && (
+              <>
+                <h1 className='forgot-title'>Forgot Password?</h1>
+                <p className='forgot-subtitle'>Enter your registered email address and we will send you an OTP.</p>
+              </>
+            )}
+
+            {step === 'otp' && (
+              <>
+                <h1 className='forgot-title'>Verify OTP</h1>
+                <p className='forgot-subtitle'>Enter the 6-digit code sent to your email.</p>
+              </>
+            )}
+
+            {step === 'reset' && (
+              <>
+                <h1 className='forgot-title'>Reset Password</h1>
+                <p className='forgot-subtitle'>Create a new secure password.</p>
+              </>
+            )}
           </div>
 
+          {error && <div className='error-message'>{error}</div>}
+          {success && <div className='success-message'>{success}</div>}
+
+          {/* Steps */}
           {step === 'email' && (
-            <>
-              <h1 className='title'>Enter Your Registered Email</h1>
-              <p className='subtitle'>We'll send you a verification code</p>
-            </>
+            <SendEmail
+              email={email}
+              setEmail={setEmail}
+              onSendOtp={handleSendOtp}
+              isLoading={isLoading}
+            />
           )}
 
           {step === 'otp' && (
-            <>
-              <p className='subtitle'>Enter the 6-digit code sent to your email</p>
-            </>
+            <VerifyOtp
+              email={email}
+              otp={otp}
+              setOtp={setOtp}
+              onVerifyOtp={handleVerifyOtp}
+              onResend={handleResendOtp}
+              isLoading={isLoading}
+            />
           )}
 
           {step === 'reset' && (
-            <>
-              <h1 className='title'>Reset Password</h1>
-              <p className='subtitle'>Create a new secure password</p>
-            </>
+            <ResetPassword
+              newPassword={newPassword}
+              setNewPassword={setNewPassword}
+              confirmPassword={confirmPassword}
+              setConfirmPassword={setConfirmPassword}
+              showNewPassword={showNewPassword}
+              setShowNewPassword={() => setShowNewPassword(prev => !prev)}
+              showConfirmPassword={showConfirmPassword}
+              setShowConfirmPassword={() => setShowConfirmPassword(prev => !prev)}
+              onResetPassword={handleResetPassword}
+              isLoading={isLoading}
+            />
           )}
-        </div>
 
-        {/* Error/Success */}
-        {error && <div className='error-message'>{error}</div>}
-        {success && <div className='success-message'>{success}</div>}
+          <div className='back-to-login'>
+            <Link to="/" className='back-link'>
+              ← Back to Login
+            </Link>
+          </div>
 
-        {/* Steps */}
-        {step === 'email' && (
-          <SendEmail
-            email={email}
-            setEmail={setEmail}
-            onSendOtp={handleSendOtp}
-            isLoading={isLoading}
-          />
-        )}
-
-        {step === 'otp' && (
-          <VerifyOtp
-            email={email}
-            otp={otp}
-            setOtp={setOtp}
-            onVerifyOtp={handleVerifyOtp}
-            onResend={handleResendOtp}
-            isLoading={isLoading}
-          />
-        )}
-
-        {step === 'reset' && (
-          <ResetPassword
-            newPassword={newPassword}
-            setNewPassword={setNewPassword}
-            confirmPassword={confirmPassword}
-            setConfirmPassword={setConfirmPassword}
-            showNewPassword={showNewPassword}
-            setShowNewPassword={() => setShowNewPassword(prev => !prev)}
-            showConfirmPassword={showConfirmPassword}
-            setShowConfirmPassword={() => setShowConfirmPassword(prev => !prev)}
-            onResetPassword={handleResetPassword}
-            isLoading={isLoading}
-          />
-        )}
-
-        <div className='back-to-login'>
-          <Link to="/" className='back-link'>
-            ← Back to Login
-          </Link>
-        </div>
-
-        <div className='footer'>
-          <p className='footer-text'>
-            Powered by <span className='footer-highlight'>Mr.PHO</span>
-          </p>
+          <div className='footer'>
+            <p className='footer-text'>
+              Powered by <span className='footer-highlight'>Mr.PHO</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

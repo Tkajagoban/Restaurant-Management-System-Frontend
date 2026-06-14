@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+   
 }
 
 .header {
@@ -54,16 +55,15 @@
     transition: all 0.2s;
 }
 
-.navLink:hover,
-.navLink.active {
+.navLink:hover {
     background-color: #f3f4f6;
-    /* Hard to reference var inside formula sometimes, keeping safe */
-    background-color: var(--background);
-    color: var(--primary);
 }
 
+/* Active / selected menu item - new color theme */
 .navLink.active {
-    border-right: 3px solid var(--primary);
+    background-color: #e8f1ff; /* soft blue background */
+    color: #0b5ed7; /* stronger blue text for contrast */
+    border-right: 3px solid #0b5ed7;
 }
 
 .icon {

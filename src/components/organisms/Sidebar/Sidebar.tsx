@@ -53,7 +53,7 @@ function Sidebar({ onNavigate, activeView }: SidebarProps) {
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="sidebar-logo">🍴</div>
-        <h2>Restaurant</h2>
+        <h2>Delicious Restaurant</h2>
       </div>
       <ul className="sidebar-nav">
         {hasPrivilege('Chef Dashboard') && (
