@@ -13,7 +13,7 @@ export interface InvoiceItem {
   price: number;
   quantity: number;
 }
-//kajagoban
+//kj
 export interface Invoice {
   invoiceId: string;
   orderId: string;
