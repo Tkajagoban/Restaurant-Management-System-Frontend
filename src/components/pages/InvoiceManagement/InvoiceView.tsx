@@ -1,5 +1,4 @@
 import styles from './InvoiceView.module.css';
-import { FaPrint } from 'react-icons/fa';
 import type { Invoice } from './InvoiceManagement'; // We will ensure this is exported
 
 interface InvoiceViewProps {
@@ -7,79 +6,6 @@ interface InvoiceViewProps {
 }
 
 const InvoiceView = ({ invoice }: InvoiceViewProps) => {
-
-  const printInvoice = () => {
-    const printWindow = window.open('', '', 'width=800,height=600');
-    if (!printWindow) return;
-
-    const htmlContent = `
-      <html>
-        <head>
-          <title>Invoice - ${invoice.invoiceId}</title>
-          <style>
-            body { font-family: 'Courier New', monospace; padding: 20px; max-width: 400px; margin: 0 auto; }
-            .header { text-align: center; border-bottom: 2px dashed #000; padding-bottom: 10px; margin-bottom: 10px; }
-            .row { display: flex; justify-content: space-between; margin-bottom: 5px; }
-            .divider { border-top: 1px dashed #000; margin: 10px 0; }
-            .total { font-weight: bold; font-size: 1.2em; }
-            .footer { text-align: center; margin-top: 20px; font-size: 0.8em; }
-            @media print {
-              .no-print { display: none; }
-            }
-          </style>
-        </head>
-        <body>
-          <div class="header">
-            <h2>${invoice.restaurantDetails?.restaurantName || 'RESTAURANT NAME'}</h2>
-            <p>${invoice.restaurantDetails?.address || '123 Food Street, City'}</p>
-            <p>Tel: ${invoice.restaurantDetails?.phone || '+123 456 7890'}</p>
-          </div>
-          
-          <div class="row"><span>Invoice:</span> <span>${invoice.invoiceId}</span></div>
-          <div class="row"><span>Date:</span> <span>${invoice.dateTime}</span></div>
-          <div class="row"><span>Order ID:</span> <span>${invoice.orderId}</span></div>
-          <div class="row"><span>Type:</span> <span>${invoice.orderType}</span></div>
-          ${invoice.tableNumber ? `<div class="row"><span>Table:</span> <span>${invoice.tableNumber}</span></div>` : ''}
-          
-          <div class="divider"></div>
-          
-          <!-- Items -->
-          ${invoice.items ? invoice.items.map(item => `
-            <div class="row">
-              <span>${item.name} x${item.quantity}</span>
-              <span>Rs. ${(item.price * item.quantity).toFixed(2)}</span>
-            </div>
-          `).join('') : ''}
-          
-          <div class="divider"></div>
-          
-          <div class="row"><span>Subtotal:</span> <span>Rs.${invoice.subtotal.toFixed(2)}</span></div>
-          <div class="row"><span>Tax:</span> <span>Rs.${invoice.taxAmount.toFixed(2)}</span></div>
-          <div class="row"><span>Service Charge:</span> <span>Rs.${invoice.serviceCharge.toFixed(2)}</span></div>
-          
-          <div class="divider"></div>
-          
-          <div class="row total"><span>GRAND TOTAL:</span> <span>Rs.${(invoice.subtotal + invoice.taxAmount + invoice.serviceCharge).toFixed(2)}</span></div>
-          
-          <div class="divider"></div>
-        
-          <div class="row"><span>Steward:</span> <span>${invoice.stewardName || invoice.createdBy}</span></div>
-          
-          <div class="footer">
-            <p>Thank you for dining with us!</p>
-            <p>Please come again.</p>
-          </div>
-
-          <script>
-            window.onload = function() { window.print(); window.close(); }
-          </script>
-        </body>
-      </html>
-    `;
-
-    printWindow.document.write(htmlContent);
-    printWindow.document.close();
-  };
 
   return (
     <div className={styles.invoiceContainer}>
