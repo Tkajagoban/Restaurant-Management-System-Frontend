@@ -59,6 +59,17 @@
     background-color: #f3f4f6;
 }
 
+.settings-pill {
+    display: inline-block;
+    margin-left: 0.5rem;
+    background-color: #0C447C;
+    color: #ffffff;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
 /* Active / selected menu item - new color theme */
 .navLink.active {
     background-color: #e8f1ff; /* soft blue background */

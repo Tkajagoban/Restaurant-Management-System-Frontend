@@ -4,9 +4,9 @@
     left: 0;
     right: 0;
     height: 64px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: #1a1a2e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,7 +36,7 @@
 .logoText {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #111827;
+    color: #ffffff;
 }
 
 .centerSection {
@@ -48,7 +48,7 @@
 .pageTitle {
     font-size: 1rem;
     font-weight: 500;
-    color: #374151;
+    color: #e5e7eb;
 }
 
 .rightSection {
@@ -135,7 +135,7 @@
 
 .roleSwitcher {
     display: flex;
-    background-color: #f3f4f6;
+    background-color: rgba(255,255,255,0.04);
     border-radius: 8px;
     padding: 4px;
 }

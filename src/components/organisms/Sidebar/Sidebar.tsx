@@ -99,7 +99,8 @@ function Sidebar({ onNavigate, activeView }: SidebarProps) {
               className={`sidebar-link ${settingsOpen ? 'active' : ''}`}
               style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
             >
-              <span className="sidebar-icon">⚙️</span> Settings
+              <span className="sidebar-icon">⚙️</span>
+              <span className="settings-pill">Settings</span>
               <span className="dropdown-arrow" style={{ marginLeft: 'auto' }}>
                 {settingsOpen ? '▼' : '▶'}
               </span>

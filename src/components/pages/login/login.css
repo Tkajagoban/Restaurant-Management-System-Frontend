@@ -868,7 +868,8 @@ body {
 .sidebar-link {
   display: flex;
   align-items: center;
-  color: #374151;
+  color: #ffffff;
+  background-color: #0C447C;
   text-decoration: none;
   padding: 0.5rem;
   border-radius: 8px;
@@ -877,7 +878,7 @@ body {
 }
 
 .sidebar-link:hover {
-  background-color: #f3f4f6;
+  background-color: #08325a; /* slightly darker on hover */
 }
 
 .sidebar-icon {
@@ -1251,12 +1252,12 @@ body {
 }
 
 .sidebar-link.active {
-  background-color: #fbbf24;
-  color: #000;
+  background-color: #073052; /* active a bit darker */
+  color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 2px 6px rgba(7, 48, 82, 0.25);
   transform: translateX(4px);
-  border-left: 3px solid #f59e0b;
+  border-left: 3px solid #ffffff20;
 }
 
 .sidebar-link.active .sidebar-icon {
